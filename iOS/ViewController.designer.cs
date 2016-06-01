@@ -15,17 +15,14 @@ namespace XamiWhammy.iOS
 	partial class ViewController
 	{
 		[Outlet]
-		UIKit.UIButton Button { get; set; }
-
-		[Action ("didPressFetchButton:")]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		partial void didPressFetchButton (UIButton sender);
+		UIActivityIndicatorView Spinner { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (Button != null) {
-				Button.Dispose ();
-				Button = null;
+			if (Spinner != null) {
+				Spinner.Dispose ();
+				Spinner = null;
 			}
 		}
 	}
