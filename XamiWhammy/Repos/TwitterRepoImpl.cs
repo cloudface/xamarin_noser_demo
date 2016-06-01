@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using XamiWhammy.Models;
 
@@ -10,9 +12,10 @@ namespace XamiWhammy.Repos
     {
         private const string CONSUMER_KEY = @"G1ooObIUlod50uILwmxgEdIec";
         private const string CONSUMER_SECRET = @"Fbo8lCQYO0IioJSxGWIDmOhSpf7J7P77Vq1wdo9fCWeVmvxi3I";
-        private const string ACCESS_TOKEN = @"4794667815-TfDOSGjmBFzj7byiAnNKmfvKe18XQsLoymfteZQ";
-        private const string ACCESS_TOKEN_SECRET = @"kUwymd5fsubLsAmCDNUhqQIg4mG1o1x6AZaE2GvUoklES";
-        private const string TWITTER_API_URL = "https://api.twitter.com/1.1/statuses/user_timeline.json";
+        private const string TWITTER_API_TIMELINE = "https://api.twitter.com/1.1/statuses/user_timeline.json";
+        private const string TWITTER_API_TOKEN = "https://api.twitter.com/oauth2/token";
+        private const int TWEET_COUNT = 10;
+        private const string USERNAME = "@Noser_Eng";
 
         public async Task<IEnumerable<Tweet>> LoadTweetsAsync()
         {
@@ -25,9 +28,29 @@ namespace XamiWhammy.Repos
             var test = LoadTweetsAsync();
             string twitterData = string.Empty;
 
-            // TODO: WebApi Request
+            string accessToken = await GetAccessToken();
 
-            return twitterData;
+            var requestUserTimeline = new HttpRequestMessage(HttpMethod.Get,
+                string.Format("https://api.twitter.com/1.1/statuses/user_timeline.json?count={0}&screen_name={1}&trim_user=1&exclude_replies=1",
+                              TWEET_COUNT, USERNAME));
+            requestUserTimeline.Headers.Add("Authorization", "Bearer " + accessToken);
+            var httpClient = new HttpClient();
+            HttpResponseMessage responseUserTimeLine = await httpClient.SendAsync(requestUserTimeline);
+            return await responseUserTimeLine.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> GetAccessToken()
+        {
+            HttpClient httpClient = new HttpClient();
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, TWITTER_API_TOKEN);
+            var customerInfo = Convert.ToBase64String(new UTF8Encoding().GetBytes(CONSUMER_KEY + ":" + CONSUMER_SECRET));
+            request.Headers.Add("Authorization", "Basic " + customerInfo);
+            request.Content = new StringContent("grant_type=client_credentials", Encoding.UTF8, "application/x-www-form-urlencoded");
+            HttpResponseMessage response = await httpClient.SendAsync(request);
+
+            string json = await response.Content.ReadAsStringAsync();
+            dynamic item = JsonConvert.DeserializeObject<object>(json);
+            return item["access_token"];
         }
 
         private IEnumerable<Tweet> DeserializeJson(string twitterData)
