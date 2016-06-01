@@ -24,7 +24,7 @@ namespace XamiWhammy.iOS
 			}
 
 			var tweet = Tweets [indexPath.Row];
-			cell.TextLabel.Text = tweet.Content;
+			cell.TextLabel.Text = tweet.text;
 			return cell;
 		}
 
