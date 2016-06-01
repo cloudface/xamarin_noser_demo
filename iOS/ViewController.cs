@@ -42,7 +42,10 @@ namespace XamiWhammy.iOS
 
 		public void ShowTweets (System.Collections.Generic.List<XamiWhammy.Models.Tweet> mocktweets)
 		{
-			throw new NotImplementedException ();
+			DataSource.Tweets = mocktweets;
+			TwitterTable.ReloadData ();
+			TwitterTable.Alpha = 1;
+			Spinner.StopAnimating ();
 		}
 		#endregion
 	}

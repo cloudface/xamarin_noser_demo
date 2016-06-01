@@ -18,7 +18,7 @@ namespace XamiWhammy.Presentation
 		{
 			View.ShowProgressBar ();
 			//TODO: fetch feed from repo
-			var mocktweets = new List<Tweets>();
+			var mocktweets = new List<Tweet>();
 
 			mocktweets.Add(new Tweet(){ text = "Wow I love this soft icecream"});
 			mocktweets.Add(new Tweet(){ text = "Humm smells a little funky"});
