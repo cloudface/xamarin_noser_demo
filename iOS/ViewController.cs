@@ -1,29 +1,24 @@
 ﻿using System;
 		
 using UIKit;
+using XamiWhammy.Presentation;
 
 namespace XamiWhammy.iOS
 {
-	public partial class ViewController : UIViewController
+	public partial class ViewController : UIViewController, TwitterView
 	{
-		int count = 1;
-		private NoserService noserService;
+		private TwitterPresenter Presenter{ get; set;}
 
 		public ViewController (IntPtr handle) : base (handle)
 		{	
-			noserService = new NoserTwitterService ();
+			
 		}
 
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-
-			// Perform any additional setup after loading the view, typically from a nib.
-			Button.AccessibilityIdentifier = "myButton";
-			Button.TouchUpInside += delegate {
-				var title = string.Format ("{0} clicks!", count++);
-				Button.SetTitle (title, UIControlState.Normal);
-			};
+			Presenter = new TwitterPresenter (this);
+			Presenter.LoadFeed ();
 		}
 
 		public override void DidReceiveMemoryWarning ()
@@ -32,10 +27,13 @@ namespace XamiWhammy.iOS
 			// Release any cached data, images, etc that aren't in use.		
 		}
 
-		partial void didPressFetchButton (UIButton sender)
+		#region TwitterView implementation
+
+		public void ShowProgressBar ()
 		{
-			Button.SetTitle("Whoa! Pressed the button!", UIControlState.Normal);
-			noserService.fetchString();
+			Spinner.StartAnimating ();
 		}
+
+		#endregion
 	}
 }

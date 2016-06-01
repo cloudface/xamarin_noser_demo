@@ -37,6 +37,8 @@
     <Compile Include="NoserTwitterService.cs" />
     <Compile Include="Repos\ITwitterRepo.cs" />
     <Compile Include="Repos\TwitterRepoImpl.cs" />
+    <Compile Include="Presentation\TwitterPresenter.cs" />
+    <Compile Include="Presentation\TwitterView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -58,5 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Presentation\" />
   </ItemGroup>
 </Project>
