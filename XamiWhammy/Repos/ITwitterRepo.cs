@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XamiWhammy.Models;
 
 namespace XamiWhammy.Repos
 {
     public interface ITwitterRepo
     {
-       Task LoadTweetsAsync();
+       Task<IEnumerable<Tweet>> LoadTweetsAsync();
     }
 }

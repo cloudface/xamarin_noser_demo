@@ -8,9 +8,9 @@ namespace XamiWhammy.Models
 {
     public class Tweet
     {
-        public string Username { get; set; }
-        public string Content { get; set; }
-        public DateTime TweetDate { get; set; }
-        public string ProfilePicture { get; set; }
+        public string name { get; set; }
+        public string text { get; set; }
+        public string created_at { get; set; }
+        public string profile_image_url { get; set; }
     }
 }
