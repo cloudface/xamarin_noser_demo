@@ -39,6 +39,11 @@ namespace XamiWhammy.iOS
 			Spinner.StartAnimating ();
 		}
 
+
+		public void ShowTweets (System.Collections.Generic.List<XamiWhammy.Models.Tweet> mocktweets)
+		{
+			throw new NotImplementedException ();
+		}
 		#endregion
 	}
 }
