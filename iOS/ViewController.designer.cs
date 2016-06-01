@@ -18,11 +18,19 @@ namespace XamiWhammy.iOS
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UIActivityIndicatorView Spinner { get; set; }
 
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UITableView TwitterTable { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (Spinner != null) {
 				Spinner.Dispose ();
 				Spinner = null;
+			}
+			if (TwitterTable != null) {
+				TwitterTable.Dispose ();
+				TwitterTable = null;
 			}
 		}
 	}
