@@ -4,6 +4,7 @@ using UIKit;
 using XamiWhammy.Presentation;
 using XamiWhammy.Models;
 using System.Collections.Generic;
+using XamiWhammy.Repos;
 
 namespace XamiWhammy.iOS
 {
@@ -20,7 +21,7 @@ namespace XamiWhammy.iOS
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			Presenter = new TwitterPresenter (this);
+			Presenter = new TwitterPresenter (this, new TwitterRepoImpl());
 			DataSource = new TwitterTableDatasource ();
 			TwitterTable.DataSource = DataSource;
 			Presenter.LoadFeed ();
