@@ -17,7 +17,7 @@ namespace XamiWhammy.Repos
         private const int TWEET_COUNT = 10;
         private const string USERNAME = "@Noser_Eng";
 
-        public async Task<IEnumerable<Tweet>> LoadTweetsAsync()
+        public async Task<List<Tweet>> LoadTweetsAsync()
         {
             string twitterData = await GetTweetsAsJsonAsync();
             return DeserializeJson(twitterData);
@@ -53,7 +53,7 @@ namespace XamiWhammy.Repos
             return item["access_token"];
         }
 
-        private IEnumerable<Tweet> DeserializeJson(string twitterData)
+        private List<Tweet> DeserializeJson(string twitterData)
         {
             return JsonConvert.DeserializeObject<List<Tweet>>(twitterData);
         }

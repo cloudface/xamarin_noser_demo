@@ -9,6 +9,6 @@ namespace XamiWhammy.Repos
 {
     public interface ITwitterRepo
     {
-       Task<IEnumerable<Tweet>> LoadTweetsAsync();
+       Task<List<Tweet>> LoadTweetsAsync();
     }
 }
