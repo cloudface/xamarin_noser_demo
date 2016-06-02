@@ -9,5 +9,7 @@ namespace XamiWhammy
 		void ShowProgressBar ();
 
 		void ShowTweets (List<Tweet> mocktweets);
+
+		void ShowNoTweetsMessage ();
 	}
 }

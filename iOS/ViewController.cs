@@ -40,8 +40,7 @@ namespace XamiWhammy.iOS
 		{
 			Spinner.StartAnimating ();
 		}
-
-
+			
 		public void ShowTweets (System.Collections.Generic.List<XamiWhammy.Models.Tweet> mocktweets)
 		{
 			DataSource.Tweets = mocktweets;
@@ -52,7 +51,7 @@ namespace XamiWhammy.iOS
 
 		public void ShowNoTweetsMessage ()
 		{
-			throw new NotImplementedException ();
+			//TODO
 		}
 		#endregion
 

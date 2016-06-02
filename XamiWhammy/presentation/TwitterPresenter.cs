@@ -21,7 +21,11 @@ namespace XamiWhammy.Presentation
 		{
 			View.ShowProgressBar ();
 			var tweets = await Repository.LoadTweetsAsync();
-			View.ShowTweets (tweets);
+			if (tweets.Count > 0) {
+				View.ShowTweets (tweets);
+			} else {
+				View.ShowNoTweetsMessage ();
+			}
 		}
 	}
 }
