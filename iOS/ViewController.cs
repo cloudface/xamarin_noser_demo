@@ -48,6 +48,11 @@ namespace XamiWhammy.iOS
 			TwitterTable.Alpha = 1;
 			Spinner.StopAnimating ();
 		}
+
+		public void ShowNoTweetsMessage ()
+		{
+			throw new NotImplementedException ();
+		}
 		#endregion
 	}
 }

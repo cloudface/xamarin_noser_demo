@@ -39,6 +39,7 @@
     <Compile Include="Repos\TwitterRepoImpl.cs" />
     <Compile Include="Presentation\TwitterPresenter.cs" />
     <Compile Include="Presentation\TwitterView.cs" />
+    <Compile Include="Models\AccessToken.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
