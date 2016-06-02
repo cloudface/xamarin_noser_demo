@@ -15,7 +15,7 @@ namespace XamiWhammy.Repos
         private const string TWITTER_API_TIMELINE = "https://api.twitter.com/1.1/statuses/user_timeline.json";
         private const string TWITTER_API_TOKEN = "https://api.twitter.com/oauth2/token";
         private const int TWEET_COUNT = 10;
-        private const string USERNAME = "@Noser_Eng";
+        private const string USERNAME = "noser_eng";
 
         public async Task<List<Tweet>> LoadTweetsAsync()
         {
