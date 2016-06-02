@@ -26,6 +26,8 @@ namespace XamiWhammy.Droid
             var view = inflater.Inflate(Resource.Layout.TweetView, parent, false);
             Tweet tweet = GetItem(position);
             view.FindViewById<TextView>(Resource.Id.tweetPreview).Text = tweet.text;
+            view.FindViewById<TextView>(Resource.Id.userName).Text = tweet.name;
+            //view.FindViewById<ImageView>(Resource.Id.profilePicture).SetImageURI(Android.Net.Uri.Parse(tweet.profile_image_url));
             return view;
         }
     }
