@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace XamiWhammy.iOS
 {
-	public partial class ViewController : UIViewController, TwitterView
+	public partial class ViewController : UIViewController, TwitterView,TwitterTableDelegateListener
 	{
 		private TwitterPresenter Presenter{ get; set;}
 		private TwitterTableDatasource DataSource { get; set;}
@@ -22,6 +22,7 @@ namespace XamiWhammy.iOS
 			base.ViewDidLoad ();
 			Presenter = new TwitterPresenter (this);
 			DataSource = new TwitterTableDatasource ();
+			TwitterTable.Delegate = new TwitterTableDelegate (this);
 			TwitterTable.DataSource = DataSource;
 			Presenter.LoadFeed ();
 		}
@@ -47,6 +48,15 @@ namespace XamiWhammy.iOS
 			TwitterTable.Alpha = 1;
 			Spinner.StopAnimating ();
 		}
+		#endregion
+
+		#region TwitterTableDelegateListener implementation
+
+		public void DidSelectRowAtIndexPath (Foundation.NSIndexPath indexPath)
+		{
+			PerformSegue ("showTwitterDetail", this);
+		}
+
 		#endregion
 	}
 }
