@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using XamiWhammy.Models;
 using XamiWhammy.Presentation;
+using XamiWhammy.Repos;
 
 namespace XamiWhammy.Droid
 {
@@ -17,9 +18,14 @@ namespace XamiWhammy.Droid
 
         private ListView TwitterList { get; set; }
 
+        public void ShowNoTweetsMessage()
+        {
+            
+        }
+
         public void ShowProgressBar()
         {
-            throw new NotImplementedException();
+           
         }
 
         public void ShowTweets(List<Tweet> tweets)
@@ -34,7 +40,7 @@ namespace XamiWhammy.Droid
 
             SetContentView (Resource.Layout.Main);
 
-            Presenter = new TwitterPresenter(this);
+            Presenter = new TwitterPresenter(this, new TwitterRepoImpl());
 
             TwitterList = FindViewById<ListView> (Resource.Id.twitterList);
 
