@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
+    <TextView
+        android:text="There is nothing at all, nothing at all NOTHING AT ALL!"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/noTweetsMessage" />
     <ListView
         android:minWidth="25px"
         android:minHeight="25px"

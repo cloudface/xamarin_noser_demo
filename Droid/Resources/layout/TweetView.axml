@@ -17,19 +17,17 @@
         android:layout_marginStart="5dp">
         <TextView
             android:text="Large Text"
-            android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/profilePicture"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/userName" />
         <TextView
             android:text="Medium Text"
+            android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="wrap_content"
-            android:layout_below="@+id/userName"
-            android:layout_toLeftOf="@+id/profilePicture"
             android:layout_height="match_parent"
-            android:id="@+id/tweetPreview" />
+            android:id="@+id/tweetPreview"
+            android:ellipsize="end" />
     </LinearLayout>
 </LinearLayout>
