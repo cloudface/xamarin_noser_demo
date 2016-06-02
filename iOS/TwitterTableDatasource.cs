@@ -12,6 +12,7 @@ namespace XamiWhammy.iOS
 
 		public TwitterTableDatasource ()
 		{
+			Tweets = new List<Tweet> ();
 		}
 
 		#region implemented abstract members of UITableViewDataSource

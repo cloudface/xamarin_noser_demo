@@ -15,7 +15,7 @@ namespace XamiWhammy.Repos
         private const string TWITTER_API_TIMELINE = "https://api.twitter.com/1.1/statuses/user_timeline.json";
         private const string TWITTER_API_TOKEN = "https://api.twitter.com/oauth2/token";
         private const int TWEET_COUNT = 10;
-        private const string USERNAME = "noser_eng";
+        private const string USERNAME = "NoserXamaDemo";
 
         public async Task<List<Tweet>> LoadTweetsAsync()
         {
@@ -25,7 +25,6 @@ namespace XamiWhammy.Repos
 
         private async Task<string> GetTweetsAsJsonAsync()
         {
-            var test = LoadTweetsAsync();
             string twitterData = string.Empty;
 
             string accessToken = await GetAccessToken();
@@ -49,8 +48,8 @@ namespace XamiWhammy.Repos
             HttpResponseMessage response = await httpClient.SendAsync(request);
 
             string json = await response.Content.ReadAsStringAsync();
-            dynamic item = JsonConvert.DeserializeObject<object>(json);
-            return item["access_token"];
+			AccessToken item = JsonConvert.DeserializeObject<AccessToken>(json);
+			return item.access_token;
         }
 
         private List<Tweet> DeserializeJson(string twitterData)
