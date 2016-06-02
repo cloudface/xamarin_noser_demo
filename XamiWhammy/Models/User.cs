@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace XamiWhammy.Models
 {
-    public class Tweet
+    public class User
     {
-        public string text { get; set; }
-        public string created_at { get; set; }
-        public User user { get; set; }
+        public string name { get; set; }
+        public string profile_image_url { get; set; }
     }
 }
